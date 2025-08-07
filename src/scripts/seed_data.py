@@ -1,11 +1,11 @@
-from src.database import get_db
+from src.database import engine, Base, get_db
 from domains.shared.models import Country
 
 def seed_countries():
-    countries= {
+    countries= [
         {"code": "US", "name": "United States"},
-        {"code": "DE", "name": "Germany"},       
-    }
+        {"code": "DE", "name": "Germany"}     
+    ]
 
 
     db = next(get_db())
