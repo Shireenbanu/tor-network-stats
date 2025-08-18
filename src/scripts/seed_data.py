@@ -1,6 +1,6 @@
 from src.database import engine, Base, get_db
-from src.domains.shared.models import Country
-from src.domains.tor_net_fetcher.models import TorVsWebCountryStats  # Import both!
+from domains.shared.model import Country
+from domains.tor_net_fetcher.model import TorVsWebCountryStats  # Import both!
 
 
 def seed_countries():

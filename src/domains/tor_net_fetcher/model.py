@@ -2,7 +2,7 @@ from sqlalchemy import Column, String, Boolean,Integer, BigInteger, ForeignKey, 
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 from src.database import Base
-from src.domains.shared.models import Country
+from src.domains.shared.model import Country
 
 class TorVsWebCountryStats(Base):
     __tablename__ = "tor_vs_web_country_stats"

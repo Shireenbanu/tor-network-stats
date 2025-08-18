@@ -1,11 +1,12 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 import os
+from config.setting import get_config
 # from dotenv import load_dotenv
 
 # load_dotenv()
 
-DATABASE_URL = os.getenv("DB_URL", "postgresql://tor_user:your_secure_password@localhost:5432/tor_stats_db")
+DATABASE_URL = get_config().get_database_url()
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 

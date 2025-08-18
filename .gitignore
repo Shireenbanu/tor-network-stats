@@ -1,3 +1,11 @@
+# Environment files with real credentials
+.env.development
+.env.production
+.env.local
+.env
+
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]

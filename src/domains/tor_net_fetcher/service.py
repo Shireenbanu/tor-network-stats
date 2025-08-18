@@ -1,10 +1,10 @@
 import requests
 import json
 from src.database import get_db
-from src.domains.tor_net_fetcher.models import TorVsWebCountryStats
+from src.domains.tor_net_fetcher.model import TorVsWebCountryStats
 from sqlalchemy.orm import Session
 from sqlalchemy.exc import SQLAlchemyError
-from src.domains.shared.models import Country
+from src.domains.shared.model import Country
 from src.domains.tor_net_fetcher.helper import HUMAN_BASELINES
 
 
@@ -204,13 +204,17 @@ class TorNetFetchService:
             print(f"❌ Unexpected error: {e}")
             return None
         
+    def fetch_tor_and_net_stats_for_all_countries(self):
+            # Fetch and save German Tor statistics
+        country_codes = service.get_all_country_codes_from_db()
+        # country_codes = ["US"]
+        for country_code in country_codes:
+            service.fetch_live_net_stats(country_code)
+            service.fetch_live_tor_stats(country_code)
+        
 
 if __name__ == "__main__":
     service = TorNetFetchService()
+    service.fetch_tor_and_net_stats_for_all_countries()
     
-    # Fetch and save German Tor statistics
-    country_codes = service.get_all_country_codes_from_db()
-    # country_codes = ["US"]
-    for country_code in country_codes:
-        service.fetch_live_net_stats(country_code)
-        service.fetch_live_tor_stats(country_code)
+
